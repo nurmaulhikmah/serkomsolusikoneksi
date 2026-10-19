@@ -17,8 +17,8 @@
             <h2 class="fw-bold mt-3 mb-4">{{ $artikel->judul }}</h2>
             
             <!-- Tanggal & Info -->
-            <p class="text-muted mb-4">
-                <i class="far fa-calendar-alt me-2"></i> {{ $artikel->created_at->format('d F Y') }}
+            <p class="text-muted small mb-1">
+                <i class="far fa-calendar-alt me-1"></i> {{ $artikel->created_at->locale('id')->translatedFormat('d F Y') }}
             </p>
 
             <!-- Gambar Utama Artikel -->

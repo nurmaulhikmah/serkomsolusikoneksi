@@ -5,13 +5,11 @@
 <div class="w-100 position-relative text-white overflow-hidden mb-4" 
      style="padding-top: 60px; padding-bottom: 60px; background: linear-gradient(rgba(13, 35, 58, 0.85), rgba(27, 59, 111, 0.85)), url('{{ asset('img/galeri.jpg') }}') center/cover no-repeat; min-height: 35vh; display: flex; align-items: center;">
     
-    <div class="container px-4 px-md-5 text-center">
-        <div class="col-lg-8 mx-auto">
-            <h1 class="display-5 fw-bold mb-3 text-white">Galeri Kegiatan</h1>
-            <p class="fs-5 opacity-85 text-light mb-0">
-                Rekam jejak aktivitas, pengerjaan instalasi di lapangan, dan portofolio proyek tim.
-            </p>
-        </div>
+    <div class="container px-4 px-md-5 py-4">
+        <h1 class="text-info fw-bold text-uppercase mb-2">Galeri</h1>
+        <p class="col-lg-7 fs-5 opacity-85 mb-0 text-light fw-light">
+             Rekam jejak aktivitas, pengerjaan instalasi di lapangan,dan portofolio proyek tim.
+        </p>
     </div>
 </div>
 
@@ -40,10 +38,6 @@
                                 <i class="fas fa-image fa-2x"></i>
                             </div>
                         @endif
-                        
-                        <div class="card-body p-4">
-                            <h5 class="fw-bold m-0">{{ $galeri->judul ?? $galeri->nama_galeri ?? 'Galeri Foto' }}</h5>
-                        </div>
                     </div>
                 </div>
             @endforeach

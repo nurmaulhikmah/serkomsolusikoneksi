@@ -5,91 +5,124 @@ namespace App\Http\Controllers;
 use App\Models\Artikel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ArtikelController extends Controller
 {
-    // Tampilkan Daftar Artikel di Panel Admin
-    public function index()
-    {
-        $artikels = Artikel::latest()->get();
-        return view('admin.artikel.index', compact('artikels'));
-    }
-
-    // Tampilkan Halaman Depan / Publik (List Artikel)
+    /**
+     * Menampilkan daftar artikel untuk pengunjung publik (frontend).
+     */
     public function publicIndex()
     {
         $artikels = Artikel::latest()->get();
         return view('frontend.artikel', compact('artikels'));
     }
 
-    // Tampilkan Halaman Detail Artikel (Publik)
+    /**
+     * Menampilkan detail artikel untuk pengunjung publik (frontend).
+     */
     public function show($id)
     {
         $artikel = Artikel::findOrFail($id);
         return view('frontend.artikel-detail', compact('artikel'));
     }
 
-    // Tampilkan Form Tambah Artikel
+    /**
+     * Menampilkan daftar artikel di admin.
+     */
+    public function index()
+    {
+        $artikels = Artikel::latest()->get();
+        return view('admin.artikel.index', compact('artikels'));
+    }
+
+    /**
+     * Menampilkan form tambah artikel.
+     */
     public function create()
     {
         return view('admin.artikel.create');
     }
 
-    // Proses Simpan Artikel ke Database
+    /**
+     * Menyimpan artikel baru ke database.
+     */
     public function store(Request $request)
     {
         $request->validate([
-            'judul'     => 'required|max:255',
-            'deskripsi' => 'required',
-            'gambar'    => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'judul'   => 'required|string|max:255',
+            'content' => 'required|string',
+            'gambar'  => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
-        $data = [
-            'judul'  => $request->judul,
-            'konten' => $request->deskripsi,
-        ];
-
+        $path = null;
         if ($request->hasFile('gambar')) {
-            $data['gambar'] = $request->file('gambar')->store('artikels', 'public');
+            $path = $request->file('gambar')->store('artikel', 'public');
         }
 
-        Artikel::create($data);
+        Artikel::create([
+            'judul'   => $request->judul,
+            'slug'    => Str::slug($request->judul),
+            'konten' => $request->content,
+            'gambar'  => $path,
+        ]);
 
         return redirect()->route('admin.artikel.index')->with('success', 'Artikel berhasil ditambahkan!');
     }
 
-    // Tampilkan Form Edit Artikel
+    /**
+     * Menampilkan form edit artikel.
+     */
     public function edit($id)
     {
         $artikel = Artikel::findOrFail($id);
         return view('admin.artikel.edit', compact('artikel'));
     }
 
-    // Proses Update Artikel ke Database
+    /**
+     * Memperbarui data artikel di database.
+     */
     public function update(Request $request, $id)
     {
         $artikel = Artikel::findOrFail($id);
 
         $request->validate([
-            'judul'     => 'required|max:255',
-            'deskripsi' => 'required',
-            'gambar'    => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'judul'   => 'required|string|max:255',
+            'content' => 'required|string',
+            'gambar'  => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
-        $artikel->judul = $request->judul;
-        $artikel->konten = $request->deskripsi;
-
-        // Jika upload gambar baru
+        $path = $artikel->gambar;
         if ($request->hasFile('gambar')) {
-            // Hapus gambar lama jika ada
-            if ($artikel->gambar && Storage::disk('public')->exists($artikel->gambar)) {
-                Storage::disk('public')->delete($artikel->gambar);
+            if ($path && Storage::disk('public')->exists($path)) {
+                Storage::disk('public')->delete($path);
             }
-            $artikel->gambar = $request->file('gambar')->store('artikels', 'public');
+            $path = $request->file('gambar')->store('artikel', 'public');
         }
 
-        $artikel->save();
+        $artikel->update([
+            'judul'   => $request->judul,
+            'slug'    => Str::slug($request->judul),
+            'content' => $request->content,
+            'gambar'  => $path,
+        ]);
 
         return redirect()->route('admin.artikel.index')->with('success', 'Artikel berhasil diperbarui!');
+    }
+
+    /**
+     * Menghapus data artikel dari database.
+     */
+    public function destroy($id)
+    {
+        $artikel = Artikel::findOrFail($id);
+
+        if ($artikel->gambar && Storage::disk('public')->exists($artikel->gambar)) {
+            Storage::disk('public')->delete($artikel->gambar);
+        }
+
+        $artikel->delete();
+
+        return redirect()->route('admin.artikel.index')->with('success', 'Artikel berhasil dihapus!');
     }
 }

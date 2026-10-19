@@ -35,7 +35,7 @@
             <p class="text-muted">
                 Kami adalah mitra strategis bagi perusahaan dan institusi yang membutuhkan solusi jaringan, konektivitas dedicated, serta infrastruktur teknologi informasi berkualitas tinggi di wilayah Bogor dan sekitarnya.
             </p>
-            <a href="/profil" class="btn btn-outline-dark btn-sm fw-semibold mt-2">Profil Lengkap &rarr;</a>
+            <a href="/profil" class="btn btn-outline-primary btn-sm fw-semibold">Profil Lengkap &rarr;</a>
         </div>
     </div>
 
@@ -96,7 +96,7 @@
                 <h2 class="fw-bold mb-1" style="color: #0d233a;">Artikel</h2>
                 <p class="text-muted small mb-0">Perkembangan terbaru dan tips teknologi dari perusahaan</p>
             </div>
-            <a href="/artikel" class="btn btn-outline-primary btn-sm fw-semibold">Lihat Semua Artikel &rarr;</a>
+            <a href="{{ route('artikel.index') }}" class="btn btn-outline-primary btn-sm fw-semibold">Lihat Semua Artikel &rarr;</a>
         </div>
 
         @if(isset($artikels) && $artikels->count() > 0)

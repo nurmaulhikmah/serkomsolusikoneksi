@@ -4,8 +4,7 @@
 <!-- Header Page Banner Profil -->
 <div class="position-relative text-white overflow-hidden py-5 mb-5" style="background: linear-gradient(rgba(13, 35, 58, 0.9), rgba(13, 35, 58, 0.85)), url('{{ asset('img/profil.jpg') }}') center/cover no-repeat; padding-top: 120px !important;">
     <div class="container px-4 px-md-5 py-4">
-        <span class="text-info fw-bold text-uppercase tracking-wider small">Tentang Kami</span>
-        <h1 class="display-4 fw-bold text-white mb-2">{{ $profil->hero_judul ?? 'Profil Perusahaan' }}</h1>
+        <h1 class="text-info fw-bold text-uppercase mb-2">{{ $profil->hero_judul ?? 'Profil Perusahaan' }}</h1>
         <p class="col-lg-7 fs-5 opacity-85 mb-0 text-light fw-light">
             {{ $profil->hero_deskripsi ?? 'Mengenal lebih dekat PT Solusi Koneksi Anda sebagai mitra transformasi digital dan infrastruktur jaringan terpercaya.' }}
         </p>
@@ -42,7 +41,7 @@
                         <div class="p-2 bg-info bg-opacity-10 text-info rounded-2 fs-4">
                             <i class="fas fa-eye"></i>
                         </div>
-                        <h3 class="fw-bold fs-4 mb-0" style="color: #0d233a;">Visi Kami</h3>
+                        <h3 class="fw-bold fs-4 mb-0" style="color: #0d233a;">Visi</h3>
                     </div>
                     <p class="card-text text-muted mb-0 leading-relaxed">
                         {{ $profil->visi ?? '' }}
@@ -58,7 +57,7 @@
                         <div class="p-2 bg-primary bg-opacity-10 text-primary rounded-2 fs-4">
                             <i class="fas fa-bullseye"></i>
                         </div>
-                        <h3 class="fw-bold fs-4 mb-0" style="color: #0d233a;">Misi Kami</h3>
+                        <h3 class="fw-bold fs-4 mb-0" style="color: #0d233a;">Misi</h3>
                     </div>
                     <ul class="text-muted mb-0 ps-3 leading-relaxed">
                         @if(!empty($profil->misi))

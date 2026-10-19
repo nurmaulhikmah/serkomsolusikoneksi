@@ -4,8 +4,7 @@
 <!-- Header Page Banner Artikel -->
 <div class="position-relative text-white overflow-hidden py-5 mb-5" style="background: linear-gradient(rgba(13, 35, 58, 0.9), rgba(13, 35, 58, 0.85)), url('{{ asset('img/artikel.jpg') }}') center/cover no-repeat; padding-top: 120px !important;">
     <div class="container px-4 px-md-5 py-4">
-        <span class="text-info fw-bold text-uppercase tracking-wider small">Wawasan & Informasi</span>
-        <h1 class="display-4 fw-bold text-white mb-2">Artikel & Berita Terkini</h1>
+        <h1 class="text-info fw-bold text-uppercase mb-2">Artikel</h1>
         <p class="col-lg-7 fs-5 opacity-85 mb-0 text-light fw-light">
             Temukan artikel, berita industri telekomunikasi, dan wawasan seputar teknologi jaringan dari tim PT Solusi Koneksi Anda.
         </p>
@@ -37,7 +36,7 @@
                     <div class="card-body p-4 d-flex flex-column">
                         <div class="d-flex align-items-center gap-2 mb-2 text-muted small">
                             <i class="far fa-calendar-alt"></i>
-                            <span>{{ $article->created_at ? $article->created_at->format('d F Y') : 'Terbaru' }}</span>
+                            <span>{{ $article->created_at ? $article->created_at->locale('id')->translatedformat('d F Y') : 'Terbaru' }}</span>
                         </div>
                         
                         <h5 class="card-title fw-bold fs-6 mb-3" style="color: #0d233a;">

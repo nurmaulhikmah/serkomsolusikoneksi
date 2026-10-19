@@ -66,55 +66,63 @@
             </div>
 
             <ul class="nav flex-column px-2">
-    <!-- Dashboard -->
-    <li class="nav-item mb-1">
-        <a class="nav-link rounded-3 {{ request()->routeIs('admin.dashboard') ? 'active text-info fw-bold bg-dark bg-opacity-25' : 'text-white' }}" href="{{ route('admin.dashboard') }}">
-            <i class="fas fa-chart-line me-2"></i> Dashboard
-        </a>
-    </li>
+                <!-- Dashboard -->
+                <li class="nav-item mb-1">
+                    <a class="nav-link rounded-3 {{ request()->routeIs('admin.dashboard') ? 'active text-info fw-bold bg-dark bg-opacity-25' : 'text-white' }}" href="{{ route('admin.dashboard') }}">
+                        <i class="fas fa-chart-line me-2"></i> Dashboard
+                    </a>
+                </li>
 
-    <!-- Profil Perusahaan -->
-    <li class="nav-item mb-1">
-        <a class="nav-link rounded-3 {{ request()->routeIs('admin.profil.*') ? 'active text-info fw-bold bg-dark bg-opacity-25' : 'text-white' }}" href="{{ route('admin.profil.edit') }}">
-            <i class="fas fa-building me-2"></i> Profil Perusahaan
-        </a>
-    </li>
+                <!-- Profil Perusahaan -->
+                <li class="nav-item mb-1">
+                    <a class="nav-link rounded-3 {{ request()->routeIs('admin.profil.*') ? 'active text-info fw-bold bg-dark bg-opacity-25' : 'text-white' }}" href="{{ route('admin.profil.edit') }}">
+                        <i class="fas fa-building me-2"></i> Profil Perusahaan
+                    </a>
+                </li>
 
-    <!-- Layanan -->
-    <li class="nav-item mb-1">
-        <a class="nav-link rounded-3 {{ request()->routeIs('admin.layanan.*') ? 'active text-info fw-bold bg-dark bg-opacity-25' : 'text-white' }}" href="{{ route('admin.layanan.index') }}">
-            <i class="fas fa-sitemap me-2"></i> Layanan
-        </a>
-    </li>
+                <!-- Layanan -->
+                <li class="nav-item mb-1">
+                    <a class="nav-link rounded-3 {{ request()->routeIs('admin.layanan.*') ? 'active text-info fw-bold bg-dark bg-opacity-25' : 'text-white' }}" href="{{ route('admin.layanan.index') }}">
+                        <i class="fas fa-sitemap me-2"></i> Layanan
+                    </a>
+                </li>
 
-    <!-- Artikel -->
-    <li class="nav-item mb-1">
-        <a class="nav-link rounded-3 {{ request()->routeIs('admin.artikel.*') ? 'active text-info fw-bold bg-dark bg-opacity-25' : 'text-white' }}" href="{{ route('admin.artikel.index') }}">
-            <i class="fas fa-file-alt me-2"></i> Artikel
-        </a>
-    </li>
+                <!-- Artikel -->
+                <li class="nav-item mb-1">
+                    <a class="nav-link rounded-3 {{ request()->routeIs('admin.artikel.*') ? 'active text-info fw-bold bg-dark bg-opacity-25' : 'text-white' }}" href="{{ route('admin.artikel.index') }}">
+                        <i class="fas fa-file-alt me-2"></i> Artikel
+                    </a>
+                </li>
 
-    <!-- Galeri -->
-    <li class="nav-item mb-1">
-        <a class="nav-link rounded-3 {{ request()->routeIs('admin.galeri.*') ? 'active text-info fw-bold bg-dark bg-opacity-25' : 'text-white' }}" href="{{ route('admin.galeri.index') }}">
-            <i class="fas fa-images me-2"></i> Galeri
-        </a>
-    </li>
+                <!-- Galeri -->
+                <li class="nav-item mb-1">
+                    <a class="nav-link rounded-3 {{ request()->routeIs('admin.galeri.*') ? 'active text-info fw-bold bg-dark bg-opacity-25' : 'text-white' }}" href="{{ route('admin.galeri.index') }}">
+                        <i class="fas fa-images me-2"></i> Galeri
+                    </a>
+                </li>
 
-    <!-- Pesan -->
-    <li class="nav-item mb-1">
-        <a class="nav-link rounded-3 {{ request()->routeIs('admin.kontak.*') ? 'active text-info fw-bold bg-dark bg-opacity-25' : 'text-white' }}" href="{{ route('admin.kontak.index') }}">
-            <i class="fas fa-envelope me-2"></i> Pesan
-        </a>
-    </li>
+                <!-- Pesan -->
+                <li class="nav-item mb-1">
+                    <a class="nav-link rounded-3 {{ request()->routeIs('admin.kontak.*') ? 'active text-info fw-bold bg-dark bg-opacity-25' : 'text-white' }}" href="{{ route('admin.kontak.index') }}">
+                        <i class="fas fa-envelope me-2"></i> Pesan
+                    </a>
+                </li>
 
-    <!-- Rating -->
-    <li class="nav-item mb-1">
-        <a class="nav-link rounded-3 {{ request()->routeIs('admin.rating.*') ? 'active text-info fw-bold bg-dark bg-opacity-25' : 'text-white' }}" href="{{ route('admin.rating.index') }}">
-            <i class="fas fa-star me-2"></i> Rating
-        </a>
-    </li>
-</ul>
+                <!-- Rating -->
+                <li class="nav-item mb-1">
+                    <a class="nav-link rounded-3 {{ request()->routeIs('admin.rating.*') ? 'active text-info fw-bold bg-dark bg-opacity-25' : 'text-white' }}" href="{{ route('admin.rating.index') }}">
+                        <i class="fas fa-star me-2"></i> Rating
+                    </a>
+                </li>
+
+                <!-- Kelola Admin (BARU) -->
+                <li class="nav-item mb-1">
+                    <a class="nav-link rounded-3 {{ request()->routeIs('admin.users.*') ? 'active text-info fw-bold bg-dark bg-opacity-25' : 'text-white' }}" href="{{ route('admin.users.index') }}">
+                        <i class="fas fa-users-cog me-2"></i> Kelola Admin
+                    </a>
+                </li>
+            </ul>
+        </div>
 
         <!-- FOOTER SIDEBAR -->
         <div class="border-top border-secondary border-opacity-25 pt-3">

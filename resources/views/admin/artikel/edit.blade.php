@@ -29,11 +29,13 @@
                         @csrf
                         @method('PUT')
 
+                        <!-- Judul Artikel -->
                         <div class="mb-3 text-start">
                             <label for="judul" class="form-label fw-semibold small" style="color: #0d233a;">Judul Artikel <span class="text-danger">*</span></label>
                             <input type="text" class="form-control shadow-none @error('judul') is-invalid @enderror" id="judul" name="judul" value="{{ old('judul', $artikel->judul) }}" required>
                         </div>
 
+                        <!-- Gambar Artikel -->
                         <div class="mb-3 text-start">
                             <label for="gambar" class="form-label fw-semibold small" style="color: #0d233a;">Gambar Artikel (Opsional)</label>
                             @if($artikel->gambar)
@@ -45,11 +47,13 @@
                             <div class="form-text text-muted small">Biarkan kosong jika tidak ingin mengubah gambar.</div>
                         </div>
 
+                        <!-- Isi Konten (Diubah name dan error-nya menjadi 'content') -->
                         <div class="mb-3 text-start">
-                            <label for="deskripsi" class="form-label fw-semibold small" style="color: #0d233a;">Isi Konten <span class="text-danger">*</span></label>
-                            <textarea class="form-control shadow-none @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="6" required>{{ old('deskripsi', $artikel->konten) }}</textarea>
+                            <label for="content" class="form-label fw-semibold small" style="color: #0d233a;">Isi Konten <span class="text-danger">*</span></label>
+                            <textarea class="form-control shadow-none @error('content') is-invalid @enderror" id="content" name="content" rows="6" required>{{ old('content', $artikel->content) }}</textarea>
                         </div>
 
+                        <!-- Tombol Aksi -->
                         <div class="d-flex gap-2 justify-content-start">
                             <button type="submit" class="btn text-white px-4 fw-semibold" style="background-color: #0d233a;">Perbarui Artikel</button>
                             <a href="{{ route('admin.artikel.index') }}" class="btn btn-light border px-4 fw-semibold text-muted">Batal</a>

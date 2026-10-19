@@ -4,7 +4,7 @@
 <div class="container-fluid px-4 py-4" style="max-width: 950px;">
     <div class="mb-4">
         <h3 class="fw-bold mb-1" style="color: #0d233a;">Edit Profil Perusahaan</h3>
-        <p class="text-muted small mb-0">Kelola semua konten teks dan angka statistik yang muncul di halaman Profil Perusahaan publik.</p>
+        <p class="text-muted small mb-0">Kelola semua halaman Profil Perusahaan</p>
     </div>
 
     @if(session('success'))

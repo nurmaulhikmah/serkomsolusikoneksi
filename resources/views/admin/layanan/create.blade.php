@@ -30,13 +30,13 @@
 
                 <!-- Nama / Judul Layanan (disesuaikan name="judul") -->
                 <div class="mb-3">
-                    <label for="judul" class="form-label fw-semibold text-dark">Nama Layanan <span class="text-danger">*</span></label>
+                    <label for="judul" class="form-label fw-semibold text-dark">Nama Layanan <span class="text-danger"></span></label>
                     <input type="text" class="form-control shadow-none @error('judul') is-invalid @enderror" id="judul" name="judul" value="{{ old('judul') }}" placeholder="Contoh: Dedicated Internet Corporate 100 Mbps" required>
                 </div>
 
                 <!-- Harga Layanan -->
                 <div class="mb-3">
-                    <label for="harga" class="form-label fw-semibold text-dark">Harga Layanan (Rp) <span class="text-danger">*</span></label>
+                    <label for="harga" class="form-label fw-semibold text-dark">Harga Layanan (Rp) <span class="text-danger"></span></label>
                     <div class="input-group">
                         <span class="input-group-text bg-light border-end-0">Rp</span>
                         <input type="number" class="form-control shadow-none border-start-0 @error('harga') is-invalid @enderror" id="harga" name="harga" value="{{ old('harga') }}" placeholder="Contoh: 1500000" required>

@@ -40,8 +40,8 @@
                         </div>
 
                         <div class="mb-3 text-start">
-                            <label for="deskripsi" class="form-label fw-semibold small" style="color: #0d233a;">Isi Konten <span class="text-danger">*</span></label>
-                            <textarea class="form-control shadow-none @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="6" placeholder="Tuliskan konten artikel di sini..." required>{{ old('deskripsi') }}</textarea>
+                            <label for="content" class="form-label fw-semibold small" style="color: #0d233a;">Isi Konten <span class="text-danger">*</span></label>
+                            <textarea class="form-control shadow-none @error('content') is-invalid @enderror" id="content" name="content" rows="6" placeholder="Tuliskan konten artikel di sini..." required>{{ old('content') }}</textarea>
                         </div>
 
                         <div class="d-flex gap-2 justify-content-start">

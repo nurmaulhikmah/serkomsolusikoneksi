@@ -42,7 +42,12 @@
                                 @endif
                             </td>
                             <td class="fw-semibold" style="color: #0d233a;">{{ $artikel->judul }}</td>
-                            <td class="text-muted small">{{ Str::limit($artikel->content, 50) }}</td>
+                            
+                            <!-- PERBAIKAN DI SINI: Menggunakan $artikel->konten (atau fallback ke content) & strip_tags -->
+                            <td class="text-muted small">
+                                {{ Str::limit(strip_tags($artikel->konten ?? $artikel->content ?? ''), 50) }}
+                            </td>
+
                             <td class="text-center">
                                 <a href="{{ route('admin.artikel.edit', $artikel->id) }}" class="btn btn-outline-warning btn-sm px-2 py-1 me-1" title="Edit">
                                     <i class="fas fa-edit"></i>

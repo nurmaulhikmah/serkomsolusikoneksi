@@ -28,7 +28,7 @@
                     
                     <!-- Nama (Opsional) -->
                     <div class="mb-3">
-                        <label class="form-label fw-bold text-dark">Nama (Opsional)</label>
+                        <label class="form-label fw-bold text-dark">Nama</label>
                         <input type="text" name="nama" class="form-control rounded-3 py-2 px-3" placeholder="Nama Anda...">
                     </div>
 

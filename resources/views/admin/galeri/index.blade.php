@@ -24,7 +24,7 @@
                     <thead class="table-light text-uppercase fs-7">
                         <tr>
                             <th width="10%">No</th>
-                            <th width="65%">Foto</th>
+                            <th width="65%">Gambar</th>
                             <th width="25%" class="text-center">Aksi</th>
                         </tr>
                     </thead>

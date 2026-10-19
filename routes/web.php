@@ -9,12 +9,11 @@ use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\RatingController;
-use App\Http\Controllers\Admin\ProfilController; // <-- TAMBAHAN CONTROLLER ADMIN PROFIL
+use App\Http\Controllers\Admin\ProfilController;
 use App\Models\Layanan;
 use App\Models\Artikel;
 use App\Models\Galeri;
-use App\Models\Profil; // <-- TAMBAHAN MODEL PROFIL
-
+use App\Models\Profil;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -28,51 +27,45 @@ Route::get('/', function () {
     return view('frontend.home', compact('layanans', 'artikels', 'galeris'));
 });
 
-// --- RUTE PUBLIK PROFIL (Diperbarui agar mengambil data dari database) ---
+// --- RUTE PUBLIK PROFIL ---
 Route::get('/profil', function () {
     $profil = Profil::first();
     return view('frontend.profil', compact('profil'));
 });
 
-// --- RUTE GLOBAL SEARCH (Smart & Filtered untuk Semua Modul) ---
+// --- RUTE GLOBAL SEARCH ---
 Route::get('/search', function (Request $request) {
     $keyword = trim($request->input('search'));
     $keywordLower = strtolower($keyword);
 
-    // 1. Jika user ngetik "layanan"
     if ($keywordLower === 'layanan') {
         $layanans = Layanan::latest()->take(3)->get();
         $artikels = collect();
         $galeris  = collect();
     } 
-    // 2. Jika user ngetik "artikel"
     elseif ($keywordLower === 'artikel') {
         $layanans = collect();
         $artikels = Artikel::latest()->take(3)->get();
         $galeris  = collect();
     } 
-    // 3. Jika user ngetik "galeri"
     elseif ($keywordLower === 'galeri') {
         $layanans = collect();
         $artikels = collect();
         $galeris  = Galeri::latest()->take(6)->get();
     } 
-    // 4. Jika user ngetik "profil" atau "tentang"
     elseif (str_contains($keywordLower, 'profil') || str_contains($keywordLower, 'tentang')) {
         return redirect('/profil');
     }
-    // 5. Jika user ngetik "kontak"
     elseif (str_contains($keywordLower, 'kontak')) {
         return redirect('/kontak');
     }
-    // 6. Pencarian bebas (kata kunci spesifik)
     else {
         $layanans = Layanan::where('judul', 'like', "%{$keyword}%")
-                        ->orWhere('deskripsi', 'like', "%{$keyword}%")
-                        ->get();
+                    ->orWhere('deskripsi', 'like', "%{$keyword}%")
+                    ->get();
 
         $artikels = Artikel::where('judul', 'like', "%{$keyword}%")
-                        ->get();
+                    ->get();
 
         $galeris = Galeri::where('judul', 'like', "%{$keyword}%")->get();
     }
@@ -100,9 +93,15 @@ Route::get('/galeri', [GaleriController::class, 'publicIndex'])->name('galeri.in
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/dashboard', [LayananController::class, 'dashboard'])->name('admin.dashboard');
 
-    // --- CRUD PROFIL PERUSAHAAN (KHUSUS EDIT) ---
+    // --- CRUD PROFIL PERUSAHAAN ---
     Route::get('/profil', [ProfilController::class, 'edit'])->name('admin.profil.edit');
     Route::put('/profil', [ProfilController::class, 'update'])->name('admin.profil.update');
+
+    // --- KELOLA AKUN ADMIN (BARU) ---
+    Route::get('/admin-users', [AuthController::class, 'indexAdmin'])->name('admin.users.index');
+    Route::get('/admin-users/create', [AuthController::class, 'createAdmin'])->name('admin.users.create');
+    Route::post('/admin-users', [AuthController::class, 'storeAdmin'])->name('admin.users.store');
+    Route::delete('/admin-users/{id}', [AuthController::class, 'destroyAdmin'])->name('admin.users.destroy');
 
     // CRUD Layanan Lengkap
     Route::get('/layanan', [LayananController::class, 'index'])->name('admin.layanan.index');

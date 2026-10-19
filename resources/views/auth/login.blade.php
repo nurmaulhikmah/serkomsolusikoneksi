@@ -17,15 +17,15 @@
             <div class="card border-0 shadow-lg rounded-3 bg-white p-4">
                 <div class="card-body">
                     
-                    <!-- Header Logo -->
-                    <div class="text-center mb-4">
-                        <div class="p-3 d-inline-block rounded-circle bg-primary bg-opacity-10 text-primary mb-2">
-                            <i class="fas fa-lock fs-3" style="color: #0d233a;"></i>
-                        </div>
-                        <h4 class="fw-bold mb-1" style="color: #0d233a;">Login Admin</h4>
-                        <p class="text-muted small">PT Solusi Koneksi Anda</p>
+                <div class="text-center mb-4">
+                    <div class="p-3 d-inline-block rounded-circle bg-primary bg-opacity-10 text-primary mb-2">
+                        <img src="{{ asset('img/logo.svg') }}" alt="Logo Perusahaan" style="width: 48px; height: 48px; object-fit: contain;">
                     </div>
-
+                    
+                    <h4 class="fw-bold mb-1 mt-2" style="color: #0d233a;">Login Admin</h4>
+                    <p class="text-muted small mb-0">PT Solusi Koneksi Anda</p>
+                </div>
+                
                     <!-- Alert Error -->
                     @if($errors->any())
                         <div class="alert alert-danger alert-dismissible fade show small" role="alert">
